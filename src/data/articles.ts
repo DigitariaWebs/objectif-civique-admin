@@ -1,0 +1,1 @@
+export { ARTICLES } from "./index";
