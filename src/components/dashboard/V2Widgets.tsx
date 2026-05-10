@@ -11,12 +11,14 @@ import { useCours } from "@/stores/useCours";
 import { useUsers } from "@/stores/useUsers";
 
 export function V2DashboardWidgets() {
-  const reports = useForumThreads((s) => s.reports.filter((r) => r.status === "open"));
+  const allReports = useForumThreads((s) => s.reports);
   const threads = useForumThreads((s) => s.threads);
   const fiches = useFiches((s) => s.items);
   const notions = useNotions((s) => s.items);
   const cours = useCours((s) => s.items);
   const users = useUsers((s) => s.items);
+
+  const reports = allReports.filter((r) => r.status === "open");
 
   const total = fiches.length + notions.length + cours.length;
   const published =
